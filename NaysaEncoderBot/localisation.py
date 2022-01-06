@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # (c) @AbirHasan2005
 
-from bot.get_cfg import get_config
+from NaysaEncoderBot.get_cfg import get_config
 
 
 class Localisation:
