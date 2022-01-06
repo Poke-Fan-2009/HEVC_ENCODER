@@ -7,7 +7,7 @@ import sys
 import time
 import traceback
 
-from bot import (
+from NaysaEncoderBot import (
     BOT_START_TIME,
     LOGGER,
     LOG_FILE_ZZGEVC,
@@ -23,9 +23,9 @@ from bot import (
 )
 
 
-from bot.commands import Command
-from bot.localisation import Localisation
-from bot.helper_funcs.display_progress import (
+from NaysaEncoderBot.commands import Command
+from NaysaEncoderBot.localisation import Localisation
+from NaysaEncoderBot.helper_funcs.display_progress import (
     TimeFormatter,
     humanbytes
 )
