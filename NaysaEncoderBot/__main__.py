@@ -1,7 +1,7 @@
 # oof
 from datetime import datetime as dt
 import os
-from bot import (
+from bot.config import (
     APP_ID,
     API_HASH,
     AUTH_USERS,
@@ -10,7 +10,8 @@ from bot import (
     TG_BOT_TOKEN,
     BOT_USERNAME,
     SESSION_NAME,
-    
+)    
+from bot import (
     data,
     app,
     crf,
@@ -18,8 +19,11 @@ from bot import (
     audio_b,
     preset,
     codec,
-    watermark 
+    watermark
 )
+    
+   
+
 from bot.helper_funcs.utils import add_task, on_task_complete
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
@@ -80,7 +84,7 @@ if __name__ == "__main__" :
 
     
    
-    @app.on_message(filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
+    @Client.on_message(filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
     async def start(bot, update):   
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
@@ -92,19 +96,19 @@ if __name__ == "__main__" :
         
      
  
-    @app.on_message(filters.incoming & filters.command(["restart", f"restart@{BOT_USERNAME}"]))
+    @Client.on_message(filters.incoming & filters.command(["restart", f"restart@{BOT_USERNAME}"]))
     async def restarter(app, message):
         if message.from_user.id in AUTH_USERS:
             await message.reply_text("•Restarting")
             quit(1)
         
-    @app.on_message(filters.incoming & filters.command(["clear", f"clear@{BOT_USERNAME}"]))
+    @Client.on_message(filters.incoming & filters.command(["clear", f"clear@{BOT_USERNAME}"]))
     async def restarter(app, message):
       data.clear()
       await message.reply_text("Successfully cleared Queue ...")
          
         
-    @app.on_message(filters.incoming & (filters.video | filters.document))
+    @Client.on_message(filters.incoming & (filters.video | filters.document))
     async def help_message(app, message):
         query = await message.reply_text("Added to Queue ⏰...\nPlease be patient, Compress will start soon", quote=True)
         data.append(message)
@@ -112,13 +116,13 @@ if __name__ == "__main__" :
          await query.delete()   
          await add_task(message)
             
-    @app.on_message(filters.incoming & (filters.photo))
+    @Client.on_message(filters.incoming & (filters.photo))
     async def help_message(app, message):
         os.system('rm thumb.jpg')
         await message.download(file_name='/app/thumb.jpg')
         await message.reply_text('Thumbnail Added')
         
-    @app.on_callback_query()
+    @Client.on_callback_query()
     async def button(bot, update):
         if update.data == "home":
             await update.message.edit_text(
@@ -141,10 +145,10 @@ if __name__ == "__main__" :
         else:
             await update.message.delete()
   
-    @app.on_message(filters.incoming & filters.command(["log", f"log@{BOT_USERNAME}"]))
+    @Client.on_message(filters.incoming & filters.command(["log", f"log@{BOT_USERNAME}"]))
     async def help_message(app, message):
         await upload_log_file(app, message)
-    @app.on_message(filters.incoming & filters.command(["ping", f"ping@{BOT_USERNAME}"]))
+    @Client.on_message(filters.incoming & filters.command(["ping", f"ping@{BOT_USERNAME}"]))
     async def up(app, message):
       stt = dt.now()
       ed = dt.now()
@@ -154,7 +158,5 @@ if __name__ == "__main__" :
       await message.reply_text(v + "\n" + p)
 
 
-             
-
-    app.run()
+            
 
