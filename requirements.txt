@@ -1,0 +1,10 @@
+aiohttp
+Pillow
+psutil
+hachoir
+tgcrypto
+pyrogram
+motor
+aiofiles
+dnspython
+ffmpeg
