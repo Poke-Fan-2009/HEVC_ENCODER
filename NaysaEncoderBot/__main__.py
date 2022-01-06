@@ -1,7 +1,7 @@
 # oof
 from datetime import datetime as dt
 import os
-from bot import (
+from NaysaEncoderBot import (
     APP_ID,
     API_HASH,
     AUTH_USERS,
