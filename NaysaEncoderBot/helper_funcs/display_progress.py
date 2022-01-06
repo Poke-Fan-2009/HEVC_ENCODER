@@ -15,7 +15,7 @@ import os
 import time
 import json
 
-from bot import (
+from NaysaEncoderBot import (
     FINISHED_PROGRESS_STR,
     UN_FINISHED_PROGRESS_STR,
     DOWNLOAD_LOCATION
