@@ -13,7 +13,7 @@ import json
 import subprocess
 import math
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
-from bot.helper_funcs.display_progress import (
+from NaysaEncoderBot.helper_funcs.display_progress import (
   TimeFormatter
 )
 from NaysaEncoderBot.localisation import Localisation
