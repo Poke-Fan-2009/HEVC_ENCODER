@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from bot.get_cfg import get_config
+from NaysaEncoderBot.get_cfg import get_config
 
 
 class Command:
