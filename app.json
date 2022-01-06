@@ -52,8 +52,16 @@
       "value": "1666551439",
       "required": true
     }
-  },
+    },
     "stack": "heroku-20",
+    "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    }
+}
+  },
    "buildpacks": [
     {
       "url": "heroku/python"
