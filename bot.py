@@ -7,11 +7,11 @@ logger = logging.getLogger(__name__)
 
 from pyrogram import Client 
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
-from NaysaIDBot.config import Config
+from NaysaEncoderBot.config import Config
 
 if __name__ == "__main__" :
     plugins = dict(
-        root="NaysaIDBot"
+        root="NaysaEncoderBot"
     )
     naysabots = Client(
         "Id Finder Bot",
