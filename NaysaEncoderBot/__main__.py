@@ -1,13 +1,10 @@
 # oof
 from datetime import datetime as dt
 import os
-from bot.config import (
-    APP_ID,
-    API_HASH,
+from NaysaEncoderBot.config import (
     AUTH_USERS,
     DOWNLOAD_LOCATION,
     LOGGER,
-    TG_BOT_TOKEN,
     BOT_USERNAME,
     SESSION_NAME,
 )    
