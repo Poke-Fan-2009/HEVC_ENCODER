@@ -7,8 +7,8 @@ logging.basicConfig(
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 LOGGER = logging.getLogger(__name__)
 import os, time, asyncio, json
-from bot.localisation import Localisation
-from bot import (
+from NaysaEncoderBot.localisation import Localisation
+from NaysaEncoderBot import (
   DOWNLOAD_LOCATION, 
   LOG_CHANNEL,
   UPDATES_CHANNEL,
@@ -16,12 +16,12 @@ from bot import (
   data,
   app  
 )
-from bot.helper_funcs.ffmpeg import (
+from NaysaEncoderBot.helper_funcs.ffmpeg import (
   convert_video,
   media_info,
   take_screen_shot
 )
-from bot.helper_funcs.display_progress import (
+from NaysaEncoderBot.helper_funcs.display_progress import (
   progress_for_pyrogram,
   TimeFormatter,
   humanbytes
