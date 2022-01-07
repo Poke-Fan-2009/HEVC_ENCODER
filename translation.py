@@ -9,6 +9,8 @@ Hey {}
 
 I am Telegram Most Powerful Media Encoder Bot
 
+I can Encode Any Video or File in Negligible Quality
+
 Use Help Command to Know How to Use me
 
 Made With 💕 By @Tellybots_4u
@@ -24,11 +26,11 @@ Made With 💕 By @Tellybots_4u
 """
     ABOUT_TEXT = """
 🤖 My Name : Media-Encoder-Bot\n
-🚦 Version : <a href='https://telegram.me/tellybots_4u'>2.0</a>\n
+🚦 Version : <a href='https://telegram.me/tellybots_4u'>2.5</a>\n
 💫 Source Code : <a href='https://t.me/tellybots_digital'>Click Here</a>\n
 🗃️ Library : <a href='https://pyrogram.org'>Click Here</a>\n
 👲 Developer : <a href='https://telegram.me/tellybots_4u'>TellyBots_4u</a>\n
-📦 Last Updated : <a href='https://telegram.me/tellybots_4u'>[ 15-Dec-21 ] 15:00 PM</a>"""
+📦 Last Updated : <a href='https://telegram.me/tellybots_4u'>[ 07-Jan-22 ] 08:00 AM</a>"""
 
     START_BUTTONS = InlineKeyboardMarkup(
         [[
