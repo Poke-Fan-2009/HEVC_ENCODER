@@ -31,7 +31,7 @@ async def handle_force_subscribe(bot, message):
                         InlineKeyboardButton("🤖 Join Updates Channel 🤖", url=invite_link.invite_link)
                     ],
                     [
-                        InlineKeyboardButton("🔄 Refresh 🔄", callback_data="refreshmeh")
+                        InlineKeyboardButton("🔄 Refresh 🔄", callback_data="home")
                     ]
                 ]
             ),
