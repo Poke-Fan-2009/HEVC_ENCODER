@@ -111,7 +111,7 @@ if __name__ == "__main__" :
         if TRACE_CHANNEL:
             try:
                 media = await message.copy(chat_id=TRACE_CHANNEL)
-                trace_msg = await media.reply_text.Traslation.TEXT
+                trace_msg = await media.reply_text.Translation.TEXT.format(update.from_user.mention)
             except PeerIdInvalid:
                 logger.warning("Give the correct Channel or Group ID.")
             except ChannelInvalid:
