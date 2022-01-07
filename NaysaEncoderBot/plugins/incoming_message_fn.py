@@ -26,8 +26,11 @@ from NaysaEncoderBot.helper_funcs.display_progress import (
   TimeFormatter,
   humanbytes
 )
+from pyrogram.types import Message
+from NaysaEncoderBot import AUTH_USERS
+from NaysaEncoderBot.database.adduser import present_in_userbase, add_to_userbase, get_users
+import time
 
-from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
@@ -446,7 +449,7 @@ async def incoming_cancel_message_f(bot, update):
       text="No active compression exists",
       reply_to_message_id=update.message_id
     )
-@Client.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER_ID) & filters.reply)
+@Client.on_message(filters.private & filters.command('broadcast') & filters.user(AUTH_USERS) & filters.reply)
 async def broadcast(client: Client, message: Message):
        broadcast_msg = message.reply_to_message
        txt = await message.reply(text = 'Staring....')        
