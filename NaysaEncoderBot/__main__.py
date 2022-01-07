@@ -110,7 +110,11 @@ if __name__ == "__main__" :
           fsub = await handle_force_subscribe(app, message)
           if fsub == 400:
             return
-                  
+        await update.reply_text(
+            text=Translation.START_TEXT.format(update.from_user.mention),
+            disable_web_page_preview=True,
+            reply_markup=Translation.START_BUTTONS
+        )                  
     @app.on_message(filters.incoming & filters.command(["restart", f"restart@{BOT_USERNAME}"]))
     async def restarter(app, message):
         if message.from_user.id in AUTH_USERS:
