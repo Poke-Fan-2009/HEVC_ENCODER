@@ -40,7 +40,5 @@ class Config(object):
     LOG_FILE_ZZGEVC = get_config("LOG_FILE_ZZGEVC", "Log.txt")
       # because, https://t.me/c/1494623325/5603
     SHOULD_USE_BUTTONS = get_config("SHOULD_USE_BUTTONS", False)
-    TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL")) if os.environ.get("TRACE_CHANNEL", "") else None
-    except:
-        TRACE_CHANNEL = None
-        logger.warning("Trace channel id was invalid")
+    TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL", False)
+    
