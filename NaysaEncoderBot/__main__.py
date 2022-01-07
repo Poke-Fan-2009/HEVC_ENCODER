@@ -106,24 +106,11 @@ if __name__ == "__main__" :
     async def start(bot, update):                          
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)
-        if UPDATES_CHANNEL:
-          fsub = await handle_force_subscribe(bot, update)
+                if UPDATES_CHANNEL:
+          fsub = await handle_force_subscribe(app, message)
           if fsub == 400:
-            return        
-            try:
-                user = await bot.get_chat_member(UPDATES_CHANNEL, message.chat.id)
-                if user.status == "kicked":
-                    await update.reply_text(
-                        text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True           
-                    )   
-                    return
-            await update.reply_text(
-                text=Translation.START_TEXT.format(update.from_user.mention),
-                disable_web_page_preview=True,
-                reply_markup=Translation.START_BUTTONS
-                )      
+            return
+                  
     @app.on_message(filters.incoming & filters.command(["restart", f"restart@{BOT_USERNAME}"]))
     async def restarter(app, message):
         if message.from_user.id in AUTH_USERS:
