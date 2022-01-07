@@ -179,7 +179,7 @@ if __name__ == "__main__" :
            for user_id in user_ids:
               try:
                 broadcast_msg = await broadcast_msg.copy(
-                chat_id =user_id ,
+                chat_id = user_id,
                 reply_to_message_id = broadcast_msg.message_id
                 )
                 success += 1
