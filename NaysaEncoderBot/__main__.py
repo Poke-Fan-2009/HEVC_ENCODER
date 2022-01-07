@@ -106,7 +106,7 @@ if __name__ == "__main__" :
     async def start(bot, update):                          
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)
-                if UPDATES_CHANNEL:
+        if UPDATES_CHANNEL:
           fsub = await handle_force_subscribe(app, message)
           if fsub == 400:
             return
