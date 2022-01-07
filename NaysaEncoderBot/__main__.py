@@ -1,6 +1,25 @@
-from pyrogram.types import Message
+
 import time
-import time
+import asyncio
+import traceback
+from binascii import (
+    Error
+)
+from pyrogram import (
+    Client,
+    filters
+)
+from pyrogram.errors import (
+    UserNotParticipant,
+    FloodWait,
+    QueryIdInvalid
+)
+from pyrogram.types import (
+    InlineKeyboardMarkup,
+    InlineKeyboardButton,
+    CallbackQuery,
+    Message
+)
 from datetime import datetime as dt
 import os
 from NaysaEncoderBot import (
