@@ -41,3 +41,4 @@ class Config(object):
       # because, https://t.me/c/1494623325/5603
     SHOULD_USE_BUTTONS = get_config("SHOULD_USE_BUTTONS", False)
     TRACE_CHANNEL = get_config("TRACE_CHANNEL")
+    DATABASE_URL = get_config("DATABASE_URL", "")
