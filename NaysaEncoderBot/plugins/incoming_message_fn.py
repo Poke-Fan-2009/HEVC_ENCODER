@@ -28,7 +28,7 @@ from NaysaEncoderBot.helper_funcs.display_progress import (
 )
 from pyrogram.types import Message
 from NaysaEncoderBot import AUTH_USERS
-from NaysaEncoderBot.database.adduser import present_in_userbase, add_to_userbase, get_users
+from NaysaEncoderBot.adduser import present_in_userbase, add_to_userbase, get_users
 import time
 
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
