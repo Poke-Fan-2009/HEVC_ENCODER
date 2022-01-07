@@ -30,7 +30,7 @@ from pyrogram.types import Message
 from NaysaEncoderBot import AUTH_USERS
 from NaysaEncoderBot.adduser import present_in_userbase, add_to_userbase, get_users
 import time
-
+from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
 from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, PeerIdInvalid
