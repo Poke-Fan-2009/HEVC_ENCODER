@@ -40,9 +40,9 @@ from NaysaEncoderBot import (
     preset,
     codec,
     watermark,
-    UPDATES_CHANNEL
-)   
-    
+    UPDATES_CHANNEL,
+    BANNED_USERS
+)    
 from NaysaEncoderBot.plugins.admin import sts, ban, _banned_usrs, unban
 from NaysaEncoderBot.forcesub import handle_force_subscribe    
     
