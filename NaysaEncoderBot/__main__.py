@@ -107,38 +107,7 @@ if __name__ == "__main__" :
     async def start(bot, update):                          
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)
-        if UPDATES_CHANNEL is not None:
-            message = update
-            client = bot
-            try:
-                user = await client.get_chat_member(UPDATES_CHANNEL, message.chat.id)
-                if user.status == "kicked":
-                    await message.reply_text(
-                        text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
-                    return
-            except UserNotParticipant:
-                await message.reply_text(
-                    text="**Please Join My Updates Channel to use this Bot!**",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
-                            ]
-                        ]
-                    ),
-                    parse_mode="markdown"
-                )
-                return
-            except Exception:
-                await message.reply_text(
-                    text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
-                    parse_mode="markdown",
-                    disable_web_page_preview=True
-                )
-                return        
+        
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
             disable_web_page_preview=True,
@@ -160,38 +129,7 @@ if __name__ == "__main__" :
     async def help_message(app, message):        
         if not await db.is_user_exist(message.chat.id):
             await db.add_user(message.chat.id)
-        if UPDATES_CHANNEL is not None:
-            message = message
-            client = app
-            try:
-                user = await client.get_chat_member(UPDATES_CHANNEL, message.chat.id)
-                if user.status == "kicked":
-                    await message.reply_text(
-                        text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
-                    return
-            except UserNotParticipant:
-                await message.reply_text(
-                    text="**Please Join My Updates Channel to use this Bot!**",
-                    reply_markup=InlineKeyboardMarkup(
-                        [
-                            [
-                                InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
-                            ]
-                        ]
-                    ),
-                    parse_mode="markdown"
-                )
-                return
-            except Exception:
-                await message.reply_text(
-                    text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
-                    parse_mode="markdown",
-                    disable_web_page_preview=True
-                )
-                return        
+
         query = await message.reply_text("Added to Queue ⏰...\nPlease be patient, Compress will start soon", quote=True)
         data.append(message)
         if len(data) == 1:
