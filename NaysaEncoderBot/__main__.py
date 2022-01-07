@@ -120,11 +120,13 @@ if __name__ == "__main__" :
     # START command
 
 
-   
-    @app.on_message(filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
-    async def start(bot, update):                          
+     @app.on_message(filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
+     async def start(bot, update):                          
         if not await db.is_user_exist(update.chat.id):
-            await db.add_user(update.chat.id)
+            await db.add_user(update.chat.id)  
+        if update.from_user.id in BANNED_USERS:
+            await update.reply_text("Sorry, You are banned.")
+            return
         if UPDATES_CHANNEL:
           fsub = await handle_force_subscribe(bot, update)
           if fsub == 400:
