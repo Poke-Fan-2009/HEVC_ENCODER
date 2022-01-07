@@ -1,6 +1,6 @@
 from pyrogram.types import Message
 
-from NaysaEncoderBot.database.adduser import present_in_userbase, add_to_userbase, get_users
+from NaysaEncoderBot.adduser import present_in_userbase, add_to_userbase, get_users
 import time
 from datetime import datetime as dt
 import os
