@@ -12,7 +12,7 @@ from NaysaEncoderBot import (
     TG_BOT_TOKEN,
     BOT_USERNAME,
     SESSION_NAME,
-    TRACE_CHANNEL,
+    DATABASE_URL,
     data,
     app,
     crf,
@@ -22,6 +22,18 @@ from NaysaEncoderBot import (
     codec,
     watermark 
 )
+
+from NaysaEncoderBot.plugins.admin import (
+    sts,
+    ban,
+    unban,
+    _banned_usrs
+)
+
+from NaysaEncoderBot.plugins.broadcast import (
+    broadcast_
+)
+
 from NaysaEncoderBot.helper_funcs.utils import add_task, on_task_complete
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
