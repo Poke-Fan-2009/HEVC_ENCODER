@@ -10,7 +10,7 @@ from NaysaEncoderBot import (
     TG_BOT_TOKEN,
     BOT_USERNAME,
     SESSION_NAME,
-    TRACE_CHANNEL,
+
     data,
     app,
     crf,
@@ -35,7 +35,7 @@ from NaysaEncoderBot.plugins.status_message_fn import (
     exec_message_f,
     upload_log_file
 )
-
+from NaysaEncoderBot.config import Config
 from NaysaEncoderBot.commands import Command
 
 sudo_users = "1666551439" 
@@ -107,9 +107,9 @@ if __name__ == "__main__" :
     @app.on_message(filters.incoming & (filters.video | filters.document))
     async def help_message(app, message):
         trace_msg = None
-        if TRACE_CHANNEL:
+        if Config.TRACE_CHANNEL:
             try:
-                media = await m.copy(chat_id=TRACE_CHANNEL)
+                media = await m.copy(chat_id=Config.TRACE_CHANNEL)
                 trace_msg = await media.reply_text(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Encoding Please Wait....')
             except PeerIdInvalid:
                 logger.warning("Give the correct Channel or Group ID.")
