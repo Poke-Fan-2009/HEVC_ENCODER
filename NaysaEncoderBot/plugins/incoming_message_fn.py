@@ -446,8 +446,8 @@ async def incoming_cancel_message_f(bot, update):
       text="No active compression exists",
       reply_to_message_id=update.message_id
     )
-@Tellybots.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER_ID) & filters.reply)
-async def broadcast(client: Tellybots, message: Message):
+@Client.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER_ID) & filters.reply)
+async def broadcast(client: Client, message: Message):
        broadcast_msg = message.reply_to_message
        txt = await message.reply(text = 'Staring....')        
        user_ids = await get_users()
