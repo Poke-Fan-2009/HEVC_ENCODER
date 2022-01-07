@@ -106,11 +106,6 @@ if __name__ == "__main__" :
         
     @app.on_message(filters.incoming & (filters.video | filters.document))
     async def help_message(app, message):
-        query = await message.reply_text("Added to Queue ⏰...\nPlease be patient, Compress will start soon", quote=True)
-        data.append(message)
-        if len(data) == 1:
-         await query.delete()   
-         await add_task(message)
         trace_msg = None
         if Config.TRACE_CHANNEL:
             try:
@@ -122,7 +117,12 @@ if __name__ == "__main__" :
                 logger.warning(
                     "Add the bot in the Trace Channel or Group as admin to send details of the users using your bot")
             except Exception as e:
-                logger.warning(e)            
+                logger.warning(e)
+        query = await message.reply_text("Added to Queue ⏰...\nPlease be patient, Compress will start soon", quote=True)
+        data.append(message)
+        if len(data) == 1:
+         await query.delete()   
+         await add_task(message)            
     @app.on_message(filters.incoming & (filters.photo))
     async def help_message(app, message):
         os.system('rm thumb.jpg')
