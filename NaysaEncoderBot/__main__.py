@@ -1,6 +1,5 @@
 from pyrogram.types import Message
 import time
-from NaysaEncoderBot.adduser import present_in_userbase, add_to_userbase, get_users
 import time
 from datetime import datetime as dt
 import os
@@ -32,7 +31,7 @@ from NaysaEncoderBot.plugins.incoming_message_fn import (
     incoming_compress_message_f,
     incoming_cancel_message_f
 )
-from pyrogram.errors import ChannelInvalid, FloodWait, UserIsBlocked, InputUserDeactivated
+
 from NaysaEncoderBot.plugins.status_message_fn import (
     eval_message_f,
     exec_message_f,
