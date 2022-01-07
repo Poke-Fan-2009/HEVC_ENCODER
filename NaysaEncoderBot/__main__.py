@@ -82,16 +82,14 @@ if __name__ == "__main__" :
     
    
     @app.on_message(filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
-    async def start(bot, update):   
+    async def start(bot, update):                          
+        if not await present_in_userbase(m.from_user.id):
+                     await add_to_userbase(m.from_user.id)        
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
             disable_web_page_preview=True,
             reply_markup=Translation.START_BUTTONS
-        )
-             
-            
-        
-     
+        )     
  
     @app.on_message(filters.incoming & filters.command(["restart", f"restart@{BOT_USERNAME}"]))
     async def restarter(app, message):
@@ -104,9 +102,11 @@ if __name__ == "__main__" :
       data.clear()
       await message.reply_text("Successfully cleared Queue ...")
          
-        
     @app.on_message(filters.incoming & (filters.video | filters.document))
-    async def help_message(app, message):
+    async def help_message(app, message):        
+        if not await present_in_userbase(m.from_user.id):
+                     await add_to_userbase(m.from_user.id)
+    
         trace_msg = None
         if TRACE_CHANNEL:
             try:
