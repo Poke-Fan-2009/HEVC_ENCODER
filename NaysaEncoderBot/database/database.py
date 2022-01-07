@@ -5,8 +5,8 @@ from NaysaEncoderBot import AUTH_USERS
 from NaysaEncoderBot.database.adduser import present_in_userbase, add_to_userbase, get_users # userbase.py is Attached below
 import time
 
-    @app.on_message(filters.private & filters.command('broadcast') & filters.user(AUTH_USERS) & filters.reply)
-    async def broadcast(client: app, message: Message):
+    @app.on_message(filters.incoming & filters.command(["broadcast", f"broadcast@{BOT_USERNAME}"]))
+    async def broadcast_msg(app, message):
            broadcast_msg = message.reply_to_message
            txt = await message.reply(text = 'Staring....')        
            user_ids = await get_users()
