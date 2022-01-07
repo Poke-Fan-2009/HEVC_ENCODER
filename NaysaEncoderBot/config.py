@@ -40,4 +40,4 @@ class Config(object):
     LOG_FILE_ZZGEVC = get_config("LOG_FILE_ZZGEVC", "Log.txt")
       # because, https://t.me/c/1494623325/5603
     SHOULD_USE_BUTTONS = get_config("SHOULD_USE_BUTTONS", False)
-    TRACE_CHANNEL = int(os.environ.get("TRACE_CHANNEL")
+    TRACE_CHANNEL = get_config("TRACE_CHANNEL")
