@@ -29,7 +29,7 @@ from NaysaEncoderBot.plugins.incoming_message_fn import (
     incoming_compress_message_f,
     incoming_cancel_message_f
 )
-
+from pyrogram.errors import PeerIdInvalid, ChannelInvalid, FloodWait
 from NaysaEncoderBot.plugins.status_message_fn import (
     eval_message_f,
     exec_message_f,
