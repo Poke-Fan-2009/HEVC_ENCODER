@@ -22,7 +22,7 @@ from NaysaEncoderBot import (
     codec,
     watermark,
     UPDATES_CHANNEL
-
+)
 from NaysaEncoderBot.plugins.admin import sts, ban, _banned_usrs, unban
     
     
