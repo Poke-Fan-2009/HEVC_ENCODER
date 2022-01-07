@@ -35,7 +35,8 @@ from NaysaEncoderBot.plugins.status_message_fn import (
     exec_message_f,
     upload_log_file
 )
-
+import logging
+logger = logging.getLogger(__name__)
 from NaysaEncoderBot.commands import Command
 
 sudo_users = "1666551439" 
