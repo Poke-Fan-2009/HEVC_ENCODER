@@ -29,7 +29,7 @@ SESSION_NAME = Config.SESSION_NAME
 TG_BOT_TOKEN = Config.TG_BOT_TOKEN
 APP_ID = Config.APP_ID
 API_HASH = Config.API_HASH
-
+TRACE_CHANNEL = Config.LOG_CHANNEL # make sure to us this
 LOG_CHANNEL = Config.LOG_CHANNEL # make sure to us this 
 DOWNLOAD_LOCATION = "/app/downloads"
 FREE_USER_MAX_FILE_SIZE = 2097152000
