@@ -240,7 +240,7 @@ if __name__ == "__main__" :
             )
 
 
-    @app.on_message(filters.private & filters.command("unban") & filters.user(Config.BOT_OWNER))
+    @app.on_message(filters.private & filters.command("unban") & filters.user(AUTH_USERS))
     async def unban(c: Client, m: Message):
 
         if len(m.command) == 1:
