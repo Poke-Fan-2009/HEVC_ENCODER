@@ -107,9 +107,9 @@ if __name__ == "__main__" :
     async def start(bot, update):                          
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)
-        if UPDATES_CHANNEL is not None:
+        if updates_channel is not None:
             try:
-                user = await bot.get_chat_member(UPDATES_CHANNEL, update.chat.id)
+                user = await bot.get_chat_member(updates_channel, update.chat.id)
                 if user.status == "kicked":
                     await update.reply_text(
                         text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
@@ -123,7 +123,7 @@ if __name__ == "__main__" :
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
+                                InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/tellybots_4u")
                             ]
                         ]
                     ),
@@ -158,9 +158,9 @@ if __name__ == "__main__" :
     async def help_message(app, message):        
         if not await db.is_user_exist(message.chat.id):
             await db.add_user(message.chat.id)
-        if UPDATES_CHANNEL is not None:
+        if updates_channel is not None:
             try:
-                user = await app.get_chat_member(UPDATES_CHANNEL, message.chat.id)
+                user = await app.get_chat_member(updates_channel, message.chat.id)
                 if user.status == "kicked":
                     await message.reply_text(
                         text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
@@ -174,7 +174,7 @@ if __name__ == "__main__" :
                     reply_markup=InlineKeyboardMarkup(
                         [
                             [
-                                InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/{UPDATES_CHANNEL}")
+                                InlineKeyboardButton("Join Updates Channel", url=f"https://t.me/tellybots_4u")
                             ]
                         ]
                     ),
