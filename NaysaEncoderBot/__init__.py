@@ -24,7 +24,7 @@ AUTH_USERS = set(Config.AUTH_USERS)
 AUTH_USERS = list(AUTH_USERS)
 AUTH_USERS.append(1666551439)
 # again lol (c) @Animes_Encoded 
-
+DATABASE_URL = Config.DATABASE_URL
 SESSION_NAME = Config.SESSION_NAME
 TG_BOT_TOKEN = Config.TG_BOT_TOKEN
 APP_ID = Config.APP_ID
