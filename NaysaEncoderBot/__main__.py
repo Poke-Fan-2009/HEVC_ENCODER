@@ -108,12 +108,10 @@ if __name__ == "__main__" :
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)
         if UPDATES_CHANNEL is not None:
-            message = update
-            client = bot
             try:
-                user = await client.get_chat_member(UPDATES_CHANNEL, message.chat.id)
+                user = await bot.get_chat_member(UPDATES_CHANNEL, update.chat.id)
                 if user.status == "kicked":
-                    await message.reply_text(
+                    await update.reply_text(
                         text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
                         parse_mode="markdown",
                         disable_web_page_preview=True
@@ -133,7 +131,7 @@ if __name__ == "__main__" :
                 )
                 return
             except Exception:
-                await message.reply_text(
+                await update.reply_text(
                     text="Something went Wrong. Contact my [Support Group](https://t.me/linux_repo).",
                     parse_mode="markdown",
                     disable_web_page_preview=True
@@ -161,10 +159,8 @@ if __name__ == "__main__" :
         if not await db.is_user_exist(message.chat.id):
             await db.add_user(message.chat.id)
         if UPDATES_CHANNEL is not None:
-            message = message
-            client = app
             try:
-                user = await client.get_chat_member(UPDATES_CHANNEL, message.chat.id)
+                user = await app.get_chat_member(UPDATES_CHANNEL, message.chat.id)
                 if user.status == "kicked":
                     await message.reply_text(
                         text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
