@@ -189,26 +189,6 @@ if __name__ == "__main__" :
     )
     app.add_handler(incoming_status_command)
 
-    # BAN Admin Command
-    incoming_ban_command = MessageHandler(
-        ban,
-        filters=filters.command(["ban_user"]) & filters.user(AUTH_USERS)
-    )
-    app.add_handler(incoming_ban_command)
-
-    # UNBAN Admin Command
-    incoming_unban_command = MessageHandler(
-        unban,
-        filters=filters.command(["unban_user"]) & filters.user(AUTH_USERS)
-    )
-    app.add_handler(incoming_unban_command)
-
-    # BANNED_USERS Admin Command
-    incoming_banned_command = MessageHandler(
-        _banned_usrs,
-        filters=filters.command(["banned_users"]) & filters.user(AUTH_USERS)
-    )
-    app.add_handler(incoming_banned_command)
 
     # BROADCAST Admin Command
     incoming_broadcast_command = MessageHandler(
@@ -216,7 +196,87 @@ if __name__ == "__main__" :
         filters=filters.command(["broadcast"]) & filters.user(AUTH_USERS) & filters.reply
     )
     app.add_handler(incoming_broadcast_command)
-             
+    @app.on_message(filters.private & filters.command("ban") & filters.user(AUTH_USERS))
+    async def ban(c: Client, m: Message):
+    
+        if len(m.command) == 1:
+            await m.reply_text(
+                f"Use this command to ban any user from the bot.\n\n"
+                f"Usage:\n\n"
+                f"`/ban_user user_id ban_duration ban_reason`\n\n"
+                f"Eg: `/ban_user 1234567 28 You misused me.`\n"
+                f"This will ban user with id `1234567` for `28` days for the reason `You misused me`.",
+                quote=True
+            )
+            return
+
+        try:
+            user_id = int(m.command[1])
+            ban_duration = int(m.command[2])
+            ban_reason = ' '.join(m.command[3:])
+            ban_log_text = f"Banning user {user_id} for {ban_duration} days for the reason {ban_reason}."
+            try:
+                await c.send_message(
+                    user_id,
+                    f"You are banned to use this bot for **{ban_duration}** day(s) for the reason __{ban_reason}__ \n\n"
+                    f"**Message from the admin**"
+                )
+                ban_log_text += '\n\nUser notified successfully!'
+            except:
+                traceback.print_exc()
+                ban_log_text += f"\n\nUser notification failed! \n\n`{traceback.format_exc()}`"
+
+            await db.ban_user(user_id, ban_duration, ban_reason)
+            print(ban_log_text)
+            await m.reply_text(
+                ban_log_text,
+                quote=True
+            )
+        except:
+            traceback.print_exc()
+            await m.reply_text(
+                f"Error occoured! Traceback given below\n\n`{traceback.format_exc()}`",
+                quote=True
+            )
+
+
+    @app.on_message(filters.private & filters.command("unban") & filters.user(Config.BOT_OWNER))
+    async def unban(c: Client, m: Message):
+
+        if len(m.command) == 1:
+            await m.reply_text(
+                f"Use this command to unban any user.\n\n"
+                f"Usage:\n\n`/unban_user user_id`\n\n"
+                f"Eg: `/unban_user 1234567`\n"
+                f"This will unban user with id `1234567`.",
+                quote=True
+            )
+            return
+
+        try:
+            user_id = int(m.command[1])
+            unban_log_text = f"Unbanning user {user_id}"
+            try:
+                await c.send_message(
+                    user_id,
+                    f"Your ban was lifted!"
+                )
+                unban_log_text += '\n\nUser notified successfully!'
+            except:
+                traceback.print_exc()
+                unban_log_text += f"\n\nUser notification failed! \n\n`{traceback.format_exc()}`"
+            await db.remove_ban(user_id)
+            print(unban_log_text)
+            await m.reply_text(
+                unban_log_text,
+                quote=True
+            )
+        except:
+            traceback.print_exc()
+            await m.reply_text(
+                f"Error occurred! Traceback given below\n\n`{traceback.format_exc()}`",
+                quote=True
+            )             
 
     app.run()
 
