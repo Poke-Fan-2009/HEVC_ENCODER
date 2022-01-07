@@ -165,8 +165,8 @@ if __name__ == "__main__" :
       p = f"🌋Pɪɴɢ = {ms}ms"
       await message.reply_text(v + "\n" + p)
 
-    @app.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER_ID) & filters.reply)
-    async def broadcast(client: Tellybots, message: Message):
+    @app.on_message(filters.private & filters.command('broadcast') & filters.user(AUTH_USERS) & filters.reply)
+    async def broadcast(client: app, message: Message):
            broadcast_msg = message.reply_to_message
            txt = await message.reply(text = 'Staring....')        
            user_ids = await get_users()
