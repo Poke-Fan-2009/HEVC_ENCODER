@@ -1,11 +1,11 @@
 from pyrogram.types import Message
 from pyrogram import Client as Tellybots
 from pyrogram import filters
-from NaysaEncoderBot import AUTH_USERS
+from NaysaEncoderBot import AUTH_USERS, BOT_USERNAME
 from NaysaEncoderBot.database.adduser import present_in_userbase, add_to_userbase, get_users # userbase.py is Attached below
 import time
 
-    @app.on_message(filters.incoming & filters.command(["broadcast", f"broadcast@{BOT_USERNAME}"]))
+    @app.on_message(filters.incoming & filters.users(AUTH_USERS) & filters.command(["broadcast", f"broadcast@{BOT_USERNAME}"]))
     async def broadcast_msg(app, message):
            broadcast_msg = message.reply_to_message
            txt = await message.reply(text = 'Staring....')        
