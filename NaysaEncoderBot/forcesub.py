@@ -1,17 +1,17 @@
 import asyncio
-from config import Config
+from NaysaEncoderBot import UPDATES_CHANNEL
 from pyrogram import Client
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 
 async def handle_force_subscribe(bot, message):
     try:
-        invite_link = await bot.create_chat_invite_link(int(Config.UPDATES_CHANNEL))
+        invite_link = await bot.create_chat_invite_link(int(UPDATES_CHANNEL))
     except FloodWait as e:
         await asyncio.sleep(e.x)
         return 400
     try:
-        user = await bot.get_chat_member(int(Config.UPDATES_CHANNEL), message.from_user.id)
+        user = await bot.get_chat_member(int(UPDATES_CHANNEL), message.from_user.id)
         if user.status == "kicked":
             await bot.send_message(
                 chat_id=message.from_user.id,
