@@ -117,7 +117,8 @@ if __name__ == "__main__" :
                         text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
                         parse_mode="markdown",
                         disable_web_page_preview=True           
-            return    
+                    )   
+                    return
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
             disable_web_page_preview=True,
