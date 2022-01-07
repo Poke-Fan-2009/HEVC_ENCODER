@@ -5,7 +5,7 @@ from NaysaEncoderBot import *
 from NaysaEncoderBot.database.adduser import present_in_userbase, add_to_userbase, get_users # userbase.py is Attached below
 import time
 
-@Tellybots.on_message(filters.private & filters.command('broadcast') & filters.user(OWNER_ID) & filters.reply)
+@Tellybots.on_message(filters.private & filters.command('broadcast') & filters.user(AUTH_USERS) & filters.reply)
 async def broadcast(client: Tellybots, message: Message):
        broadcast_msg = message.reply_to_message
        txt = await message.reply(text = 'Staring....')        
