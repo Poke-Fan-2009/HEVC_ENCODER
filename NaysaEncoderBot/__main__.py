@@ -83,8 +83,8 @@ if __name__ == "__main__" :
    
     @app.on_message(filters.incoming & filters.command(["start", f"start@{BOT_USERNAME}"]))
     async def start(bot, update):                          
-        if not await present_in_userbase(m.from_user.id):
-                     await add_to_userbase(m.from_user.id)        
+        if not await present_in_userbase(update.from_user.id):
+                     await add_to_userbase(update.from_user.id)        
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
             disable_web_page_preview=True,
@@ -104,14 +104,14 @@ if __name__ == "__main__" :
          
     @app.on_message(filters.incoming & (filters.video | filters.document))
     async def help_message(app, message):        
-        if not await present_in_userbase(m.from_user.id):
-                     await add_to_userbase(m.from_user.id)
+        if not await present_in_userbase(message.from_user.id):
+                     await add_to_userbase(message.from_user.id)
     
         trace_msg = None
         if TRACE_CHANNEL:
             try:
                 media = await message.copy(chat_id=TRACE_CHANNEL)
-                trace_msg = await media.reply_text(f'👀 User Name : {message.from_user.mention}\n\n🚴‍♂️ User Id : <code>{message.from_user.id}</code>\n\n🚦 Status : Compressing 🗜️...')
+                trace_msg = await media.reply_text(f'👀 User Name : {message.from_user.mention}\n\n🚴‍♂️ User Id : <code>{message.from_user.id}</code>\n\n🚦 Status : Recently 🗜️...')
             except PeerIdInvalid:
                 logger.warning("Give the correct Channel or Group ID.")
             except ChannelInvalid:
