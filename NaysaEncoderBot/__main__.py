@@ -113,10 +113,10 @@ if __name__ == "__main__" :
             try:
                 user = await bot.get_chat_member(UPDATES_CHANNEL, message.chat.id)
                 if user.status == "kicked":
-        await update.reply_text(
-            text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
-            parse_mode="markdown",
-            disable_web_page_preview=True
+                    await update.reply_text(
+                        text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+                        parse_mode="markdown",
+                        disable_web_page_preview=True
                     
                     return    
         await update.reply_text(
