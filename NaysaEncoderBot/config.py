@@ -4,7 +4,7 @@ class Config(object):
     # You can keep this default
     SESSION_NAME = get_config("SESSION_NAME", "AHCompressorBot")
     # AHCompressBot....
-    # sucks Dude
+    BANNED_USERS = get_config("BANNED_USERS")
     APP_ID = int(get_config("APP_ID", 12345))
     API_HASH = get_config("API_HASH", "")
     LOG_CHANNEL = get_config("LOG_CHANNEL")
