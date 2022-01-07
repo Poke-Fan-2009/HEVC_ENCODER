@@ -20,7 +20,7 @@ from NaysaEncoderBot import (
     audio_b,
     preset,
     codec,
-    watermark 
+    watermark,
     UPDATES_CHANNEL
 
 from NaysaEncoderBot.plugins.admin import (
