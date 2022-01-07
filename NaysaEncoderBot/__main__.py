@@ -21,7 +21,7 @@ from NaysaEncoderBot import (
     preset,
     codec,
     watermark 
-)
+    UPDATES_CHANNEL
 
 from NaysaEncoderBot.plugins.admin import (
     sts,
@@ -33,7 +33,16 @@ from NaysaEncoderBot.plugins.admin import (
 from NaysaEncoderBot.plugins.broadcast import (
     broadcast_
 )
-
+from NaysaEncoderBot.database import Database
+import os, time, asyncio, json
+from pyrogram.handlers import MessageHandler, CallbackQueryHandler
+from pyrogram.types import ChatPermissions, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.errors.exceptions.bad_request_400 import UserNotParticipant, UsernameNotOccupied, ChatAdminRequired, \
+    PeerIdInvalid
+db = Database(DATABASE_URL, SESSION_NAME)
+CURRENT_PROCESSES = {}
+CHAT_FLOOD = {}
+broadcast_ids = {}
 from NaysaEncoderBot.helper_funcs.utils import add_task, on_task_complete
 from pyrogram import Client, filters
 from pyrogram.handlers import MessageHandler, CallbackQueryHandler
