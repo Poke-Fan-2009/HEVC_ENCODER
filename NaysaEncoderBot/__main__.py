@@ -20,11 +20,10 @@ from NaysaEncoderBot import (
     audio_b,
     preset,
     codec,
-    watermark,
-    UPDATES_CHANNEL
+    watermark
 )
 from NaysaEncoderBot.plugins.admin import sts, ban, _banned_usrs, unban
-    
+from NaysaEncoderBot.forcesub import handle_force_subscribe   
     
     
     
