@@ -110,14 +110,14 @@ if __name__ == "__main__" :
           fsub = await handle_force_subscribe(bot, update)
           if fsub == 400:
             return        
-            try:
+            
                 user = await bot.get_chat_member(UPDATES_CHANNEL, message.chat.id)
                 if user.status == "kicked":
         await update.reply_text(
-                        text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
-                        parse_mode="markdown",
-                        disable_web_page_preview=True
-                    )
+            text="Sorry Sir, You are Banned to use me. Contact my [Support Group](https://t.me/linux_repo).",
+            parse_mode="markdown",
+            disable_web_page_preview=True
+                    
                     return    
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
