@@ -108,8 +108,7 @@ if __name__ == "__main__" :
     @app.on_message(filters.incoming & (filters.video | filters.document))
     async def help_message(app, message):        
         if not await present_in_userbase(message.from_user.id):
-                     await add_to_userbase(message.from_user.id)
-    
+                     await add_to_userbase(message.from_user.id)   
         trace_msg = None
         if TRACE_CHANNEL:
             try:
