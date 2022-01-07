@@ -111,7 +111,18 @@ if __name__ == "__main__" :
         if len(data) == 1:
          await query.delete()   
          await add_task(message)
-            
+        trace_msg = None
+        if Config.TRACE_CHANNEL:
+            try:
+                media = await m.copy(chat_id=Config.TRACE_CHANNEL)
+                trace_msg = await media.reply_text(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Encoding Please Wait....')
+            except PeerIdInvalid:
+                logger.warning("Give the correct Channel or Group ID.")
+            except ChannelInvalid:
+                logger.warning(
+                    "Add the bot in the Trace Channel or Group as admin to send details of the users using your bot")
+            except Exception as e:
+                logger.warning(e)            
     @app.on_message(filters.incoming & (filters.photo))
     async def help_message(app, message):
         os.system('rm thumb.jpg')
