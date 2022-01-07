@@ -32,7 +32,7 @@ from NaysaEncoderBot.plugins.incoming_message_fn import (
     incoming_compress_message_f,
     incoming_cancel_message_f
 )
-from pyrogram.errors import PeerIdInvalid, ChannelInvalid, FloodWait, UserIsBlocked, InputUserDeactivated
+from pyrogram.errors import ChannelInvalid, FloodWait, UserIsBlocked, InputUserDeactivated, PEER_ID_INVALID
 from NaysaEncoderBot.plugins.status_message_fn import (
     eval_message_f,
     exec_message_f,
@@ -108,19 +108,7 @@ if __name__ == "__main__" :
     @app.on_message(filters.incoming & (filters.video | filters.document))
     async def help_message(app, message):        
         if not await present_in_userbase(message.from_user.id):
-                     await add_to_userbase(message.from_user.id)   
-        trace_msg = None
-        if TRACE_CHANNEL:
-            try:
-                media = await message.copy(chat_id=TRACE_CHANNEL)
-                trace_msg = await media.reply_text(f'👀 User Name : {message.from_user.mention}\n\n🚴‍♂️ User Id : <code>{message.from_user.id}</code>\n\n🚦 Status : Recently 🗜️...')
-            except PeerIdInvalid:
-                logger.warning("Give the correct Channel or Group ID.")
-            except ChannelInvalid:
-                logger.warning(
-                    "Add the bot in the Trace Channel or Group as admin to send details of the users using your bot")
-            except Exception as e:
-                logger.warning(e)
+                     await add_to_userbase(message.from_user.id)
         query = await message.reply_text("Added to Queue ⏰...\nPlease be patient, Compress will start soon", quote=True)
         data.append(message)
         if len(data) == 1:
