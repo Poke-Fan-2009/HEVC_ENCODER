@@ -20,12 +20,12 @@ from NaysaEncoderBot import (
     audio_b,
     preset,
     codec,
-    watermark
-)
+    watermark,
+    UPDATES_CHANNEL
+)   
+    
 from NaysaEncoderBot.plugins.admin import sts, ban, _banned_usrs, unban
-from NaysaEncoderBot.forcesub import handle_force_subscribe   
-    
-    
+from NaysaEncoderBot.forcesub import handle_force_subscribe    
     
 
 from NaysaEncoderBot.plugins.broadcast import (
@@ -106,7 +106,10 @@ if __name__ == "__main__" :
     async def start(bot, update):                          
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)
-        
+        if UPDATES_CHANNEL:
+          fsub = await handle_force_subscribe(client, message)
+          if fsub == 400:
+            return        
         await update.reply_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
             disable_web_page_preview=True,
@@ -128,7 +131,10 @@ if __name__ == "__main__" :
     async def help_message(app, message):        
         if not await db.is_user_exist(message.chat.id):
             await db.add_user(message.chat.id)
-
+        if UPDATES_CHANNEL:
+          fsub = await handle_force_subscribe(client, message)
+          if fsub == 400:
+            return
         query = await message.reply_text("Added to Queue ⏰...\nPlease be patient, Compress will start soon", quote=True)
         data.append(message)
         if len(data) == 1:
