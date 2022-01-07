@@ -110,8 +110,8 @@ if __name__ == "__main__" :
         trace_msg = None
         if TRACE_CHANNEL:
             try:
-                media = await m.copy(chat_id=TRACE_CHANNEL)
-                trace_msg = await media.reply_text(f'**User Name:** {m.from_user.mention(style="md")}\n\n**User Id:** `{m.from_user.id}`\n\n**New File Name:** `{new_file_name}`\n\n**Status:** Encoding Please Wait....')
+                media = await message.copy(chat_id=TRACE_CHANNEL)
+                trace_msg = await media.reply_text(f'**User Name:** {message.from_user.mention(style="md")}\n\n**User Id:** `{message.from_user.id}`\n\n**Status:** Encoding Please Wait....')
             except PeerIdInvalid:
                 logger.warning("Give the correct Channel or Group ID.")
             except ChannelInvalid:
