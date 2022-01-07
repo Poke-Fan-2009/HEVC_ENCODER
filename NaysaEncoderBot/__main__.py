@@ -111,7 +111,7 @@ if __name__ == "__main__" :
         if TRACE_CHANNEL:
             try:
                 media = await message.copy(chat_id=TRACE_CHANNEL)
-                trace_msg = await media.reply_text(f'User Name:(message.from_user.mention(style="md"))\n\nUser Id:<code>{message.from_user.id}</code>\n\nStatus: Compressing....')
+                trace_msg = await media.reply_text(f'User Name:{message.from_user.mention}\n\nUser Id:<code>{message.from_user.id}</code>\n\nStatus: Compressing....')
             except PeerIdInvalid:
                 logger.warning("Give the correct Channel or Group ID.")
             except ChannelInvalid:
