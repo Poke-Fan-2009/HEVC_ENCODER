@@ -29,4 +29,4 @@ class Command:
         "COMMAND_UPLOAD_LOG_FILE",
         "log"
     )
-    TEXT = "Send Resolution Like This /set_res 720p"
+    TEXT = "Username {}\n\nUser Id: <code>{message.from_user.id}</code>\n\nStatus: Added Files To Database...."
