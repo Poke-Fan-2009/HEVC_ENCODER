@@ -107,7 +107,7 @@ if __name__ == "__main__" :
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)
         if UPDATES_CHANNEL:
-          fsub = await handle_force_subscribe(app, message)
+          fsub = await handle_force_subscribe(bot, update)
           if fsub == 400:
             return
         await update.reply_text(
