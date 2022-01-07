@@ -110,7 +110,7 @@ if __name__ == "__main__" :
           fsub = await handle_force_subscribe(bot, update)
           if fsub == 400:
             return        
-            
+            try:
                 user = await bot.get_chat_member(UPDATES_CHANNEL, message.chat.id)
                 if user.status == "kicked":
         await update.reply_text(
