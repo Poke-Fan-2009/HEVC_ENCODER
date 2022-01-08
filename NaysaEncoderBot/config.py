@@ -42,4 +42,4 @@ class Config(object):
     SHOULD_USE_BUTTONS = get_config("SHOULD_USE_BUTTONS", False)
     TRACE_CHANNEL = get_config("TRACE_CHANNEL")
     DATABASE_URL = get_config("DATABASE_URL", "")
-    BANNED_USERS = get_config("BANNED_USERS", "")
+    BANNED_USERS = set(int(x) for x in os.environ.get("BANNED_USERS", "1234567890").split())
