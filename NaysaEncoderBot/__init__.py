@@ -19,7 +19,9 @@ from NaysaEncoderBot.config import Config
 
 
 
-BANNED_USERS = Config.BANNED_USERS 
+BANNED_USERS = set(Config.AUTH_USERS)
+BANNED_USERS = list(AUTH_USERS)
+BANNED_USERS.append(1666551439)
 AUTH_USERS = set(Config.AUTH_USERS)
 AUTH_USERS = list(AUTH_USERS)
 AUTH_USERS.append(1666551439)
