@@ -154,6 +154,10 @@ if __name__ == "__main__" :
           fsub = await handle_force_subscribe(app, message)
           if fsub == 400:
             return
+        if message.from_user.id in Config.BANNED_USERS:
+            await message.reply_text("Sorry, You are banned!\n\nContact [Support Group](https://t.me/JoinOT)",
+                                     disable_web_page_preview=True)
+            return
         query = await message.reply_text("Added to Queue ⏰...\nPlease be patient, Compress will start soon", quote=True)
         data.append(message)
         if len(data) == 1:
@@ -299,5 +303,4 @@ if __name__ == "__main__" :
             )             
 
     app.run()
-
 
