@@ -4,7 +4,7 @@ class Config(object):
     # You can keep this default
     SESSION_NAME = get_config("SESSION_NAME", "AHCompressorBot")
     # AHCompressBot....
-    BANNED_USERS = get_config("BANNED_USERS")
+    
     APP_ID = int(get_config("APP_ID", 12345))
     API_HASH = get_config("API_HASH", "")
     LOG_CHANNEL = get_config("LOG_CHANNEL")
@@ -42,3 +42,9 @@ class Config(object):
     SHOULD_USE_BUTTONS = get_config("SHOULD_USE_BUTTONS", False)
     TRACE_CHANNEL = get_config("TRACE_CHANNEL")
     DATABASE_URL = get_config("DATABASE_URL", "")
+    BANNED_USERS = set(
+        int(x) for x in get_config(
+            "BANNNED_USERS",
+            should_prompt=True
+        ).split()
+    )
