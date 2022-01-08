@@ -44,7 +44,7 @@ from NaysaEncoderBot import (
 )    
 from NaysaEncoderBot.plugins.admin import sts, ban, _banned_usrs, unban
 from NaysaEncoderBot.forcesub import handle_force_subscribe    
-from NaysaEncoderBot.config import BANNED_USERS    
+from NaysaEncoderBot.config import Config   
 
 from NaysaEncoderBot.plugins.broadcast import (
     broadcast_
@@ -123,7 +123,7 @@ if __name__ == "__main__" :
     async def start(bot, update):                          
         if not await db.is_user_exist(update.chat.id):
             await db.add_user(update.chat.id)  
-        if update.from_user.id in BANNED_USERS:
+        if update.from_user.id in Config.BANNED_USERS:
             await update.reply_text("Sorry, You are banned.")
             return
         if UPDATES_CHANNEL:
